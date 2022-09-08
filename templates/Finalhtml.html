@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+ <style>
+ 
+ h1 {text-align: center;}
+ 
+p {text-align: center;}
+div {text-align: center;}
+
+ </style>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+<marquee>welcome to our prediction page</marquee>
+
+<body style="background-color:white;">
+ 
+ 
+ <div class="login">
+        <img src="https://innodatatics.ai/assets/innologo.png">
+         
+	<h1 style="color:Blue;">Environment Impact by Logistic Domain</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+         <fieldset>
+         <legend>***</legend>
+         <label for="df">Vehicle Type:</label>
+
+
+<select name="Vehicle Type">
+    <option value="0">1 MT Tata Ace (Closed Body)</option>
+  <option value="1">1 MT Tata Ace (Open Body)</option>
+  <option value="2">1.5 MT Tata Ace Pickup (Open Body)</option>
+  <option value="3">1.5 MT Tata Ace Vehicle (Closed Body)</option>
+<option value="4">1 MT Mahindra</option>
+<option value="5">14 FT Open - 3 MT"</option>
+<option value="6">"15 FT Single-Axle 7.2MT (8.5 H) Container - HCV</option>
+<option value="7">17 FT Container</option>
+<option value="8">17 FT Open 5MT - MCV</option>
+<option value="9">19 FT Open 7MT - MCV</option>
+<option value="10">19 FT OPEN BODY 8 MT</option>
+<option value="11">19 FT SXL Container</option>
+<option value="12">20 FT CLOSE 7MT-MCV</option>
+<option value="13">20 FT Closed Container 8MT</option>
+<option value="14">20FT Open 9MT-MCV</option>
+<option value="15">20FT SXL Container</option>
+<option value="16">22 FT Closed Container</option>
+<option value="17">22 FT Open Body 16MT</option>
+<option value="18">22 FT Taurus Open 16MT-HCV</option>
+<option value="19">24/26 FT Closed Container 20MT-HCV</option>
+<option value="20">24/26 FT Taurus Open 21MT-HCV</option>
+<option value="21">24FT SXL Container</option>
+<option value="22">25 FT Closed Body 20MT</option>
+<option value="23">25 FT Open Body 21MT</option>
+<option value="24">26FT Taurus Open 27MT-HCV</option>
+<option value="25">27 Ft Open Body 21MT</option>
+<option value="26">28FT Open Body 25MT</option>
+<option value="27">30 FT Open MXL 30MT</option>
+<option value="28">30 FT Open SXL 30MT</option>
+<option value="29">31FT Open Body 18MT</option>
+<option value="30">32 FT Closed Container 15MT</option>
+<option value="31">32 FT Multi-Axle 14MT-HCV</option>
+<option value="32">32 Ft Multi-Axle MXL 18MT</option>
+<option value="33">32FT Open Taurus</option>
+<option value="34">32FT Single-Axle 7MT-HCV</option>
+<option value="35">37 FT Trailer Open</option>
+<option value="36">40 FT 3XL Trailer 35MT</option>
+<option value="37">40 FT Flat Bed Double-Axle 21 MT Trailer</option>
+<option value="38">40 FT Flat Bed Multi-Axle 27MT Trailer</option>
+<option value="39">40 FT Flat Bed Single-Axle 20MT Trailer</option>
+<option value="40">50FT Flat Bed 30MT Trailer</option>
+<option value="41">Tata 407/14FT Open 3MT-LCV</option>
+<option value="42">Tata 407 Open 2 MT mini-LCV</option>
+
+<option>
+
+
+  
+</select> 
+    	
+        
+            <br>
+            <br>
+            <input type="text" name="Fuel_Consumption_Overall_in_per_100km" placeholder="Fuel_Consumption_per_100km" required="required" />
+            
+            
+
+  
+</select> 
+<br>
+<br>
+
+            
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+   <br>
+   <br>
+
+
+     
+
+ 
+ 
+ <script>
+    function myfun()
+    {
+      var a= document.getElementById('number').value;
+      var b= 0.67;
+      var c= 0.12;
+      var d= 0.11;
+      var e= 0.09;
+      var f= 0.01;
+      
+      document.getElementById('result').innerHTML=(a*b);
+      document.getElementById('result2').innerHTML=(a*c);
+      document.getElementById('result3').innerHTML=(a*d);
+      document.getElementById('result4').innerHTML=(a*e);
+      document.getElementById('result5').innerHTML=(a*f);
+    }
+  
+  </script>
+
+  Total Pollution Emission:
+  <input type="number" value="" id="number"><br><br>
+  
+  
+  <input type="submit" value="Calculate" onclick="return myfun()"> <br><br>
+  <b> The emission of N2 is:</b>
+  <span id="result"></span>
+  <br><br>
+  <b> The emission of CO2 is:</b>
+  <span id="result2"></span>
+  <br><br>
+  <b> The emission of O2 is:</b>
+  <span id="result3"></span>
+  <br><br>
+  <b> The emission of H2O is:</b>
+  <span id="result4"></span>
+  <br><br>
+  <b> Other Particulate Matter:</b>
+  <span id="result5"></span>
+
+  </div>
+
+</fieldset>
+
+
+
+ 
+
+
+</body>
+</html>
+
+
